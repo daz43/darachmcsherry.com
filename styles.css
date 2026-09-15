@@ -778,6 +778,7 @@ section { padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 64px); }
     justify-content: flex-start;
     padding-top: clamp(24px, 8vw, 48px);
   }
+  .scroll-cue { display: none; }
 }
 
 @media (max-width: 480px) {
