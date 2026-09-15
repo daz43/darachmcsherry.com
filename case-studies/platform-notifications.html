@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Notifications — Darach McSherry</title>
+<meta name="description" content="Case study: a notifications experience that alerts users on live activity across multiple security modules, designed for both organization-based and multi-tenancy points of view.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="noise" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <a class="brand" href="../index.html#top">Darach McSherry<span>.</span></a>
+  <nav class="nav">
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#experience">Experience</a>
+    <a href="../index.html#testimonials">Testimonials</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+
+  <section class="case-hero" style="--tint:#e7dfd3;">
+    <div class="case-hero-inner">
+      <a class="back-link reveal" href="../index.html#work">← Back to work</a>
+      <p class="case-meta reveal">Platform design · 2026</p>
+      <h1 class="reveal">Platform Notifications</h1>
+      <p class="case-tagline reveal">A notifications experience that alerts users on live activity across multiple security modules, designed for both organization-based and multi-tenancy points of view.</p>
+    </div>
+  </section>
+
+  <section class="case-body">
+    <div class="case-block reveal">
+      <h2>User Problem</h2>
+      <p>Current customer notifications are fragmented across modules, creating a frustrating experience for customers. They are not managed consistently or offer the same level of functionality. They lack detail, not providing users with enough information to make a decision (even if that decision is to ignore it).</p>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Goal</h2>
+      <p>To enable users to create notifications that are useful and timely across all modules.</p>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>My Role</h2>
+      <p>I designed the in-app notifications experience for both single-tenant and multi-tenant environments, the email templates and the 3rd-party integrations experience.</p>
+      <p>I identified use cases across the cybersecurity environment and moulded them into a single notification banner design and settings experience.</p>
+      <p>I worked cross-functionally with front-end and back-end developers as well as product managers and end-users to develop an experience that was both robust and user-centric.</p>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Two Points of View</h2>
+      <p>Multi-tenancy is a huge part of Rapid7's service — they have customers who manage customers, with many organizations sitting below them. Alongside this, most customers just need a straightforward, single organization-based view.</p>
+      <p>It was important that the notifications experience considered both of these perspectives from the outset, rather than designing for one and retrofitting the other. From wireframing through to final design, I worked through each stage for both points of view in parallel.</p>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>What do the current experiences look like?</h2>
+      <p>In order to design the new notifications experience, it was first important to identify what already existed in our system.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/platform-notifications/current-experience.png" alt="A collage of existing notification-related screens across the platform, showing inconsistent layouts and styles across modules." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>What are competitors doing?</h2>
+      <p>To understand what made a good notifications experience, I carried out competitor analysis on 19 competitors. This was extremely important to understand best practices for interaction design, content design and behavior design.</p>
+
+      <div class="research-stat">
+        <span class="research-stat-number">19</span>
+        <span class="research-stat-label">competitors reviewed across security, IT, and everyday productivity tools</span>
+      </div>
+
+      <div class="competitor-columns">
+        <div class="competitor-column competitor-column--direct">
+          <h3>Direct competitors</h3>
+          <ul>
+            <li>Cisco Security</li>
+            <li>CrowdStrike</li>
+            <li>Tanium</li>
+            <li>Arctic Wolf</li>
+            <li>Tines</li>
+          </ul>
+        </div>
+        <div class="competitor-column competitor-column--indirect">
+          <h3>Indirect competitors</h3>
+          <ul>
+            <li>Dovetail</li>
+            <li>Jira</li>
+            <li>Zoom</li>
+            <li>Lattice</li>
+            <li>Freshservice</li>
+            <li>Miro</li>
+            <li>Azure</li>
+            <li>Workday</li>
+            <li>GitHub</li>
+            <li>Figma</li>
+            <li>Squarespace</li>
+            <li>Windows 11</li>
+            <li>Apple</li>
+            <li>Slack</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="competitor-note">I drew on different aspects of these tools to inform three areas of the experience: <strong>Notification Settings</strong>, the <strong>in-app Notification Center</strong>, and <strong>emails</strong>.</p>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Use Cases</h2>
+      <p>Use cases are broken out into three streams of importance.</p>
+
+      <div class="usecase-group">
+        <h3>Upcoming</h3>
+        <ul class="usecase-list">
+          <li>
+            <span>Receive notification on service maintenance, performance degradation, or upcoming downtime.</span>
+          </li>
+          <li>
+            <span>Notify me when a module licence is nearing expiration, when usage exceeds a threshold or when log ingestion approaches quota.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="usecase-group">
+        <h3>Immediate Response</h3>
+        <ul class="usecase-list">
+          <li>
+            <span>I want to know when activity needs attention (Alerts, Investigations, findings) based on my personal thresholds or rules.</span>
+          </li>
+          <li>
+            <span>Notify me when a incident, vulnerability remediation task, or compliance issue is assigned to a user, or when a teammate adds a comment/tag in platform.</span>
+          </li>
+          <li>
+            <span>Send a notification when a critical integration fails.</span>
+          </li>
+          <li>
+            <span>Notify admins when a user is added, an account is deactivated, or a role/permission change across the platform.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="usecase-group">
+        <h3>Happened</h3>
+        <ul class="usecase-list">
+          <li>
+            <span>Notify when organizational risk posture shifts significantly or when a customer's metrics deviate from industry peers.</span>
+          </li>
+          <li>
+            <span>Notify when a feature is available or when a customer hasn't yet configured a recommended module.</span>
+          </li>
+          <li>
+            <span>Notify me when a new automation integration, detection rule, or compliance policies are available.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Dynamic Email Templates</h2>
+      <p>As part of the notifications experience I worked on creating a robust email template that would allow us to standardize how our users are notified about events within the Platform.</p>
+      <p>One of our first use cases for this templates was RFIs (requests for information) where internal MDR users would receive and respond to customer requests.</p>
+      <p>I worked closely with back-end engineering across different teams to build and implement this template.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/platform-notifications/dynamic-email-template.png" alt="Dynamic RFI email template showing what changed on a request for information, including assignee, status, assets, users, and comments." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Wireframing &amp; Lo-Fi Mocks</h2>
+      <p>Alongside the email templates, the other major piece of this project was the in-product UI experience — the in-app Notification Center and Notification Settings. Building on the user flows and object model, I created wireframes for both the organization-based and multi-tenancy notifications experiences to begin visualising how each solution would take shape.</p>
+      <p>These early layouts helped me explore the structure of the interface and identify the components needed to bring each concept closer to reality.</p>
+      <p>I then converted the wireframes into low-fidelity mockups to establish the initial look and feel of the experience and fine-tune the information architecture before moving into higher-fidelity design.</p>
+
+      <h3 class="case-subhead">Organization-based</h3>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/platform-notifications/wireframes-lofi.png" alt="Early wireframes and low-fidelity mockups exploring the structure of the organization-based notifications interface, including archive, notification panel, and user settings screens." loading="lazy">
+      </div>
+
+      <h3 class="case-subhead">Multi-Tenancy</h3>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/platform-notifications/multi-tenancy-flow.png" alt="Wireframe flow showing the multi-tenant notification structure across MSSP, Tenant, Role, and Organization levels." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Prototyping</h2>
+      <p>To understand the behavior and interaction design of the notification experience, I worked through prototypes for both points of view, reviewing them closely with users and refining each until it met their needs and requirements.</p>
+      <p>Halfway through the initial design phase, I switched to Kiro, an AI code editing tool, converting my Figma and Miro designs into fully functional prototypes. This accelerated prototyping 5x and let me share working prototypes with stakeholders, as well as work through ideas and test concepts out early.</p>
+
+      <h3 class="case-subhead">Organization-based</h3>
+      <p>This prototype focuses on the day-to-day experience for a single organization — reviewing notifications, adjusting alert thresholds, and managing settings without the added complexity of multiple tenants.</p>
+      <span class="case-micro-label">Figma Version</span>
+      <div class="case-block-image">
+        <video src="../assets/case-studies/platform-notifications/org-notifications-prototype.mov" autoplay muted loop playsinline controls></video>
+      </div>
+
+      <span class="case-micro-label">Kiro Version</span>
+      <div class="case-block-image">
+        <video src="../assets/case-studies/platform-notifications/ai-prototyping.mov" autoplay muted loop playsinline controls></video>
+      </div>
+
+      <h3 class="case-subhead">Multi-Tenancy</h3>
+      <p>Designing the notification settings experience for multi-tenancy was a whole new challenge. Customers wanted high-level controls but also granular control over what their users could see and manage. I designed a tree-like navigation which enabled me to provide the visibility and control that they needed.</p>
+      <span class="case-micro-label">Figma Version</span>
+      <div class="case-block-image">
+        <video src="../assets/case-studies/platform-notifications/multi-tenancy-settings.mov" autoplay muted loop playsinline controls></video>
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Component Design</h2>
+      <p>A massive aspect of this project was designing a scalable Notification card that catered for every use case across the platform, from simple status updates to complex, multi-line alerts requiring action.</p>
+      <p>I worked closely with front-end engineering to define rules for the SDK, so that any team integrating with the notification system would abide by the same rules and restrictions we set — keeping the experience consistent no matter who built on top of it.</p>
+      <p>This component and its supporting rules were designed to work for both single organization and multi-tenancy contexts.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/platform-notifications/notification-components.png" alt="A single base notification card component radiating into its many use-case variants: new investigation, alerts, RFI attachments, connector errors, scan complete, report generated, and more." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Final Design</h2>
+      <p>The final, polished experience is still being finalized as the notification service continues to roll out across the platform.</p>
+
+      <h3 class="case-subhead">Organization-based</h3>
+      <div class="case-block-placeholder">
+        <p>Final designs coming soon.</p>
+      </div>
+
+      <h3 class="case-subhead">Multi-Tenancy</h3>
+      <div class="case-block-placeholder">
+        <p>Final designs coming soon.</p>
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Outcome</h2>
+      <p>12 platform features have adopted the notification service, using both the dynamic email template and the in-app notification UI experience.</p>
+      <p>These emails are addressing notification issues that customers have faced for a long time, replacing fragmented, inconsistent messaging with a single, standardized experience.</p>
+      <p>The service is still in active development, so quantitative impact is early to measure — but adoption across 12 features to date is a strong signal that it's solving a real, long-standing problem for customers.</p>
+    </div>
+  </section>
+
+  <section class="case-next">
+    <a class="case-next-link reveal" href="../index.html#work">
+      <span class="case-next-label">Next case study</span>
+      <h3>Unified Data Collection</h3>
+      <p>Streamlining data ingestion and asset scanning by creating a consistent data collection, management, and monitoring experience.</p>
+      <span class="case-next-arrow">View case study →</span>
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Darach McSherry. All rights reserved.</p>
+  <a href="#top" class="to-top">Back to top ↑</a>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

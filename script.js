@@ -1,27 +1,6 @@
 (function () {
   "use strict";
 
-  // Theme toggle, persisted per browser
-  var root = document.documentElement;
-  var themeToggle = document.getElementById("themeToggle");
-  var stored = null;
-  try { stored = localStorage.getItem("theme"); } catch (e) {}
-  if (stored === "light" || stored === "dark") {
-    root.setAttribute("data-theme", stored);
-  }
-
-  function currentTheme() {
-    if (root.getAttribute("data-theme") === "dark") return "dark";
-    if (root.getAttribute("data-theme") === "light") return "light";
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-
-  themeToggle.addEventListener("click", function () {
-    var next = currentTheme() === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    try { localStorage.setItem("theme", next); } catch (e) {}
-  });
-
   // Mobile nav
   var navToggle = document.getElementById("navToggle");
   var nav = document.querySelector(".nav");
@@ -53,6 +32,30 @@
     revealEls.forEach(function (el) { observer.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
+  // Scroll-spy nav: highlight the nav link for the section in view
+  var navLinks = document.querySelectorAll(".nav a[href*='#']");
+  var sectionMap = [];
+  navLinks.forEach(function (link) {
+    var hash = link.getAttribute("href").split("#")[1];
+    var section = hash ? document.getElementById(hash) : null;
+    if (section) sectionMap.push({ link: link, section: section });
+  });
+  if (sectionMap.length && "IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var match = sectionMap.filter(function (m) { return m.section === entry.target; })[0];
+          if (!match) return;
+          navLinks.forEach(function (l) { l.classList.remove("active"); });
+          match.link.classList.add("active");
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    sectionMap.forEach(function (m) { spy.observe(m.section); });
   }
 
   // Footer year
