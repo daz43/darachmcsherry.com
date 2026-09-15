@@ -772,6 +772,12 @@ section { padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 64px); }
   .timeline-item { grid-template-columns: 1fr; gap: 8px; }
 
   .testimonial-grid { grid-template-columns: 1fr; }
+
+  .hero {
+    min-height: auto;
+    justify-content: flex-start;
+    padding-top: clamp(24px, 8vw, 48px);
+  }
 }
 
 @media (max-width: 480px) {
