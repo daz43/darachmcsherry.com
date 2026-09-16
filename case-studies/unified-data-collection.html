@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unified Data Collection — Darach McSherry</title>
+<meta name="description" content="Case study: recreating a security platform's data collection experiences to deliver a more streamlined and user-friendly setup and monitoring flow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script>
+(function () {
+  try {
+    if (sessionStorage.getItem("cs_unlocked") !== "yes") {
+      document.documentElement.classList.add("cs-locked");
+    }
+  } catch (e) {
+    document.documentElement.classList.add("cs-locked");
+  }
+})();
+</script>
+</head>
+<body>
+
+<div class="case-lock">
+  <form class="case-lock-card">
+    <p class="case-lock-eyebrow">Private case study</p>
+    <h1>This case study is password protected</h1>
+    <p class="case-lock-copy">Enter the password to view this project.</p>
+    <input type="password" class="case-lock-input" placeholder="Password" autocomplete="off" required>
+    <button type="submit" class="btn btn-primary">Unlock</button>
+    <p class="case-lock-error" hidden>Incorrect password — try again.</p>
+  </form>
+</div>
+
+<div class="noise" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <a class="brand" href="../index.html#top">Darach McSherry<span>.</span></a>
+  <nav class="nav">
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#experience">Experience</a>
+    <a href="../index.html#testimonials">Testimonials</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+
+  <section class="case-hero" style="--tint:#dbe4e2;">
+    <div class="case-hero-inner">
+      <a class="back-link reveal" href="../index.html#work">← Back to work</a>
+      <p class="case-meta reveal">Product design · 2025</p>
+      <h1 class="reveal">Unified Data Collection</h1>
+      <p class="case-tagline reveal">Taking apart a security platform's data collection experiences and recreating them to deliver a more streamlined, user-friendly experience.</p>
+    </div>
+  </section>
+
+  <section class="case-body">
+    <div class="case-block reveal">
+      <h2>User Problem</h2>
+      <p>With many ways to import assets and ingest log data into the platform, users are often left overwhelmed. There are unclear guidelines on exactly what they need to set up, when, and how — resulting in many users never receiving the true capability of the platform.</p>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Goal</h2>
+      <p>Design a consistent, streamlined experience for setting up, monitoring, and managing integrations, scan engines, and other data collection methods.</p>
+      <p>The solution should cater for users of all maturity levels, ensuring they have the guidance, resources, and visibility they need to correctly set up and monitor their environment.</p>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Identifying all moving parts</h2>
+      <p>My first step in tackling this mammoth task was to audit the platform and identify all log and asset ingestion methods. This task came with some challenges.</p>
+      <p>Each product in the platform had various different methods of collecting data — some predominant connectors, but also some small, insignificant methods that I missed initially, as my definition of what a data connector was, was quite vague.</p>
+      <div class="connector-diagram">
+        <div class="connector-row">
+          <span>AppSec Scan Engines</span>
+          <span>Import Feeds</span>
+          <span>Network Sensors</span>
+        </div>
+        <div class="connector-row">
+          <span>Threat Intel Integrations</span>
+          <span>AppSec Integrations</span>
+          <span>ChatOps</span>
+        </div>
+        <div class="connector-row">
+          <span>Orchestrators</span>
+          <span>Event Sources</span>
+          <span>Discovery Seeds</span>
+          <span>Engine Pools</span>
+        </div>
+        <div class="connector-row">
+          <span>Plugins</span>
+          <span>Automation Connections</span>
+          <span>Cloud Accounts</span>
+          <span>VM Scan Engines</span>
+          <span>Collectors</span>
+        </div>
+        <div class="connector-row">
+          <span>Cloud Integrations</span>
+          <span>Agents</span>
+          <span>Discovery Connections</span>
+          <span>Attack Surface Connectors</span>
+        </div>
+        <div class="connector-row">
+          <span>Targets</span>
+          <span>Digital Risk Protection Sources</span>
+          <span>Intelligence Feeds</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Understanding the jobs to be done by users</h2>
+      <p>I defined four stages that a user navigates with data collection:</p>
+      <ol class="numbered-list">
+        <li>Setup data collection sources.</li>
+        <li>Identify all assets and data.</li>
+        <li>Monitor the health of data sources.</li>
+        <li>Validate that tools are working.</li>
+      </ol>
+      <p>I then created user stories for each stage of the jobs that a user would do for each type of data connector.</p>
+      <p>This enabled me to get a better idea of how I could streamline the experience.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/unified-data-collection/jobs-to-be-done.png" alt="Jobs-to-be-done map showing four job stages branching from the goal of monitoring all data, each with supporting user stories." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Content modeling setup and monitoring experiences</h2>
+      <p>To properly unify the data collection experience, I needed to content model the "add" and "view" experience. This gave me a clear view of all the attributes common and unique to each data connector.</p>
+      <p>With this, I could map out a consistent experience for each type, so the user knows what to expect.</p>
+      <p>This was my first time content modelling, which was a huge learning curve, but enabled me to view data and UI in a completely different light. I now use this in every piece of work I do.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/unified-data-collection/content-model.png" alt="Content model listing every attribute, common and unique, across each data collection method, grouped by category." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Data Modelling</h2>
+      <p>I then moved on to data model the journey of a log and asset throughout the platform ecosystem. Tracking them from when they were collected/ingested, the whole way to what they become in a security incident/case.</p>
+      <p>By mapping out the data stream, I uncovered similarities between the data and assets, what types of rules they flow through, what findings they become, and most importantly, what type of alert they transform into.</p>
+      <p>This was my first time data modelling. The scale of this task gave me a great insight into systems design and how data transforms into tangible insights.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/unified-data-collection/data-model.png" alt="Data model tracing the journey of assets and log data across connectors, inventory, log data, and controls/rules." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Auditing the data collection setup experiences</h2>
+      <p>Once I had understood each of the objects well enough, I then delved into the current experience of setting up each of the data connectors/integrations.</p>
+      <p>I spent quite some time studying documentation and going through each of the flows myself to get a feel for it, documenting pain points and opportunities along the way.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/unified-data-collection/setup-audit.png" alt="Audit of existing setup flows for Collector, Event Source, and Plugin connectors, mapped step by step." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>User Insights</h2>
+      <p>Whilst going through the setup flows, I had gathered quite a few questions on how and why things worked a certain way.</p>
+      <p>I interviewed teams of security solutions engineers, devops engineers, and CAs to get their input, as these folks all work as part of the managed services and use the documentation and UI more than enterprise customers.</p>
+      <p>The findings from this included a lot of frustration, confusion, and want for a better experience.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/unified-data-collection/user-insights.png" alt="Pain points and opportunities gathered from the MVM team, VM TAMs, and D&amp;R CAs during user interviews." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Mapping out the 'view' experience</h2>
+      <p>Using a similar artifact to the 'add' experience, I modeled the listing pages using common attributes. This allowed me to apply consistency to the monitoring of data connectors.</p>
+      <ol class="numbered-list">
+        <li>Identifying information (vendor logo, name, ID)</li>
+        <li>Status (connection, health, activity)</li>
+        <li>Parent/child objects (number of associated items)</li>
+        <li>Timestamp (date added, last updated)</li>
+        <li>Version (if applicable)</li>
+        <li>Recent activity (if applicable)</li>
+        <li>Capacity (if applicable)</li>
+      </ol>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/unified-data-collection/view-experience.png" alt="Listing page content model organized into eight attribute buckets, applied across every data collection method." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Unifying and streamlining the flows</h2>
+      <p>Now that I understood the frustrations from users and my own experience, I began to map out the system for setting connectors up.</p>
+      <p>I used a grid and 'buckets' to define stages of setup based on current flows. I then slotted each of the data connector setups into this modular system.</p>
+      <p>I was surprised it worked so well — I now had a dynamic, consistent framework.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/unified-data-collection/unified-framework.png" alt="Modular setup framework organizing every connector type into consistent stages: about, vendor selection, hosting, prerequisites, installation, configuration, and activation." loading="lazy">
+      </div>
+
+      <h3 class="case-subhead">Transferring the framework into wireframes</h3>
+      <p>Working through the experience in wireframes to bring the modular framework to life.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/unified-data-collection/framework-wireframes.jpg" alt="Wireframes translating the modular setup framework into a full lo-fi flow across every connector type." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>What I Learned</h2>
+      <p>This was my first time working at a systems design level — looking across multiple products, working out how each one actually functioned under the hood, and identifying the similarities between them to map out a single, unified approach. It fundamentally changed how I think about data and interfaces, and it's a way of thinking I now bring into every piece of work I do.</p>
+      <p>It was also a great lesson in artifact-based communication. When I shared these models and diagrams with internal stakeholders, they didn't just validate the direction of the design — they actually helped people understand our own system better than they had before. Watching a sprawling, complex platform get distilled into a handful of clear diagrams, and seeing the effect that had on how the team talked about the system, was a huge win, and one of the most rewarding parts of this project.</p>
+    </div>
+  </section>
+
+  <section class="case-status">
+    <div class="case-status-inner">
+      As of July 2025, this project was parked due to a lack of resourcing. However, it has been picked back up again in Feb 2026 and scoped down to focus primarily on integrations.
+    </div>
+  </section>
+
+  <section class="case-next">
+    <a class="case-next-link reveal" href="user-settings-resources.html">
+      <span class="case-next-label">Next case study</span>
+      <h3>User Settings &amp; Resources</h3>
+      <p>A centralised hub for all user-level settings and a global navigation bar for all global resources.</p>
+      <span class="case-next-arrow">View case study →</span>
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Darach McSherry. All rights reserved.</p>
+  <a href="#top" class="to-top">Back to top ↑</a>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

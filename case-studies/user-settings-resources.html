@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Settings &amp; Resources — Darach McSherry</title>
+<meta name="description" content="Case study: a centralised hub for all user-level settings and a global navigation bar for global resources across a security platform.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script>
+(function () {
+  try {
+    if (sessionStorage.getItem("cs_unlocked") !== "yes") {
+      document.documentElement.classList.add("cs-locked");
+    }
+  } catch (e) {
+    document.documentElement.classList.add("cs-locked");
+  }
+})();
+</script>
+</head>
+<body>
+
+<div class="case-lock">
+  <form class="case-lock-card">
+    <p class="case-lock-eyebrow">Private case study</p>
+    <h1>This case study is password protected</h1>
+    <p class="case-lock-copy">Enter the password to view this project.</p>
+    <input type="password" class="case-lock-input" placeholder="Password" autocomplete="off" required>
+    <button type="submit" class="btn btn-primary">Unlock</button>
+    <p class="case-lock-error" hidden>Incorrect password — try again.</p>
+  </form>
+</div>
+
+<div class="noise" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <a class="brand" href="../index.html#top">Darach McSherry<span>.</span></a>
+  <nav class="nav">
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#experience">Experience</a>
+    <a href="../index.html#testimonials">Testimonials</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+
+  <section class="case-hero" style="--tint:#e6d9df;">
+    <div class="case-hero-inner">
+      <a class="back-link reveal" href="../index.html#work">← Back to work</a>
+      <p class="case-meta reveal">Product design · 2026</p>
+      <h1 class="reveal">User Settings &amp; Resources</h1>
+      <p class="case-tagline reveal">A centralised hub for all user-level settings and a global navigation bar for all global resources.</p>
+    </div>
+  </section>
+
+  <section class="case-body">
+    <div class="case-block reveal">
+      <h2>User Problem</h2>
+      <p>Currently, essential utilities available to any user are scattered across different sections of the UI, often buried or inconsistently placed across products. Users struggle to locate key user-level settings, access support resources in a consistent way (e.g. documentation), or manage notification preferences efficiently.</p>
+      <p>This fragmentation results in frustration, reduced adoption of self-service tools, and unnecessary support tickets.</p>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Goal</h2>
+      <p>Designed to streamline access to key user-level tools and resources across the platform, I aimed to unify the top navigation bars and create a unified user settings area.</p>
+      <p>The top navigation bar consolidates access to Notifications, Help, Support, Educational Resources, and user-level environment preferences, whilst the user settings area consolidates user profile details, theming, display settings, communication preferences, security, and visibility over user-level access to capabilities. Both are designed to improve discoverability, consistency, and user empowerment across all products.</p>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>What does the current experience look like?</h2>
+      <p>To define the elements that would shape the new unified top navigation and user settings experience, I started with a detailed page audit, cataloging every component across the platform. This allowed me to ensure complete visibility and avoid any gaps in the final design.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/user-settings-resources/current-experience-audit.png" alt="Detailed audit of every existing top navigation and user settings component across the platform, annotated with where each element leads." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Organising content into types</h2>
+      <p>I then organised the items into meaningful groups, aligning them by function and intent. This created the structure needed to streamline and unify the user experience.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/user-settings-resources/content-organized.png" alt="Audited items grouped into meaningful categories: data-in shortcuts, help and documentation, profile controls, customer support portal, administration, and quick actions." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Usage Analytics</h2>
+      <p>To inform decisions around merging, relocating, or retiring elements, I evaluated the usage of each item. Leveraging Pendo for analytics, I documented and synthesised the results in Google Sheets.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/user-settings-resources/usage-analytics.png" alt="Google Sheet documenting top navigation usage metrics from Pendo, including visitors and clicks over 90 days by product segment." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Content modeling to map out the structure of the solution</h2>
+      <p>I then created a content model that gave me structured visibility into everything on a more granular level.</p>
+      <p>I identified super types for the solution and then broke out the sub types, attributes, and actions.</p>
+      <p>Through this I identified inconsistencies and started condensing things together.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/user-settings-resources/content-model.png" alt="Content model breaking User Education & Support into subtypes, attributes, and actions across Learning Center and Customer Support Portal." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>What are competitors doing?</h2>
+      <p>To uncover opportunities and benchmark best practices, I analysed competitor platforms, focusing on their top navigation content, IA, and user settings/preferences UI. This research provided critical insight into common industry patterns and expectations.</p>
+
+      <div class="research-stat">
+        <span class="research-stat-number">28</span>
+        <span class="research-stat-label">competitor platforms reviewed across security and everyday productivity tools</span>
+      </div>
+
+      <div class="competitor-columns">
+        <div class="competitor-column competitor-column--direct">
+          <h3>Direct competitors</h3>
+          <ul>
+            <li>Wiz</li>
+            <li>Sentinel One</li>
+            <li>Secureworks</li>
+            <li>Tenable</li>
+            <li>Splunk</li>
+            <li>Orca Security</li>
+            <li>Cortex</li>
+            <li>Qualys</li>
+            <li>CrowdStrike</li>
+            <li>Axonius</li>
+            <li>Azure</li>
+            <li>Arctic Wolf</li>
+            <li>Tanium</li>
+            <li>Microsoft 365 Admin Center</li>
+          </ul>
+        </div>
+        <div class="competitor-column competitor-column--indirect">
+          <h3>Indirect competitors</h3>
+          <ul>
+            <li>Slack</li>
+            <li>Jira</li>
+            <li>ChatGPT</li>
+            <li>Okta</li>
+            <li>Google</li>
+            <li>Gmail</li>
+            <li>Dovetail</li>
+            <li>Workday</li>
+            <li>Adobe Creative Cloud</li>
+            <li>Figma</li>
+            <li>Squarespace</li>
+            <li>Miro</li>
+            <li>Pendo</li>
+            <li>GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Synthesising Competitor Findings</h2>
+      <p>Once I had captured all competitor UI and documented their contents, I synthesised them into thematic trends. This included quantifying how many vendors surfaced certain elements in the top navigation and how many tucked features such as theme switching into user settings.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/user-settings-resources/competitor-synthesis.png" alt="Competitor screens annotated and grouped into recurring themes: help surfaced at the high level, notifications surfaced at the high level, identifying information, and view profile and preferences." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>User Personas</h2>
+      <p>As User Settings and Global Resources are accessed by all users, this affects every persona — including Threat Analysts, Hands-on Security Leaders, and Security Solutions Engineers.</p>
+      <div class="persona-grid">
+        <div class="persona-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          <p>Threat Analyst</p>
+        </div>
+        <div class="persona-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          <p>Hands-on Security Leader</p>
+        </div>
+        <div class="persona-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          <p>Security Solutions Engineer</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Use Cases</h2>
+      <p>These use cases enabled me to turn fuzzy goals into clear, buildable flows by outlining what the user does and how the system responds.</p>
+      <ul class="usecase-list">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="10" cy="6" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="8" cy="18" r="2" fill="currentColor" stroke="none"/></svg>
+          <span>See all user-level controls in the one area.</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 2-2.4 3.7"/><circle cx="12" cy="17" r="0.6" fill="currentColor" stroke="none"/></svg>
+          <span>I want a single entry point to help &amp; support.</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>
+          <span>Quick visibility into their capability access and roles.</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>Manage my user-level security settings.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>User Stories</h2>
+      <p>To get an idea of how users currently feel, and then how they could feel once switching to a more consolidated and seamless experience, I created user stories that helped me imagine how the new experience would make them feel. I used this to help me walk in the shoes of the users.</p>
+      <div class="story-grid">
+        <div class="story-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 5c2-1 5-1 7 0v14c-2-1-5-1-7 0V5Z"/><path d="M22 5c-2-1-5-1-7 0v14c2-1 5-1 7 0V5Z"/></svg>
+          <p>As a user, when I realise my profile is inaccurate, I want to update my profile, so that my information is correct.</p>
+        </div>
+        <div class="story-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 5c2-1 5-1 7 0v14c-2-1-5-1-7 0V5Z"/><path d="M22 5c-2-1-5-1-7 0v14c2-1 5-1 7 0V5Z"/></svg>
+          <p>As a user, when I am unsure of what I have access to in my environment, I want to review the permissions that are currently set, so that I can request access or change my permissions.</p>
+        </div>
+        <div class="story-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 5c2-1 5-1 7 0v14c-2-1-5-1-7 0V5Z"/><path d="M22 5c-2-1-5-1-7 0v14c2-1 5-1 7 0V5Z"/></svg>
+          <p>As an analyst, when I need assistance to carry out a task but not in the context of the task, I want direct links to documentation and support, so that I can solve issues quickly.</p>
+        </div>
+        <div class="story-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 5c2-1 5-1 7 0v14c-2-1-5-1-7 0V5Z"/><path d="M22 5c-2-1-5-1-7 0v14c2-1 5-1 7 0V5Z"/></svg>
+          <p>As a user, when our company policies are updated, I want to easily or automatically update my profile settings (e.g. MFA), so that I can keep my profile up-to-date and minimize distractions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>Wireframing &amp; Lo-Fi Mocks</h2>
+      <p>Building on the user flows and object model, I created wireframes to begin visualising how the solution would take shape.</p>
+      <p>These early layouts helped me explore the structure of the interface and identify the components needed to bring the concept closer to reality.</p>
+      <p>I then converted the wireframes into low-fidelity mockups to establish the initial look and feel of the experience and fine-tune the information architecture before moving into higher-fidelity design.</p>
+      <div class="case-block-image">
+        <img src="../assets/case-studies/user-settings-resources/wireframes-lofi.png" alt="Lo-fi wireframes exploring the Learning Center, Support Portal, notification center, and menu, panel, and accordion patterns for help and resources." loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-block reveal">
+      <h2>A unified, centralised user settings</h2>
+      <p>By designing one centralised home for all user settings across the platform, users now have a streamlined experience when configuring their settings and preferences.</p>
+      <div class="case-block-image">
+        <video src="../assets/case-studies/user-settings-resources/unified-settings-final.mov" autoplay muted loop playsinline controls></video>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-next">
+    <a class="case-next-link reveal" href="../index.html#work">
+      <span class="case-next-label">Next case study</span>
+      <h3>Platform Access Level Control</h3>
+      <p>A cohesive access control level system that enables granular control of features and entities across a security platform.</p>
+      <span class="case-next-arrow">View case study →</span>
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Darach McSherry. All rights reserved.</p>
+  <a href="#top" class="to-top">Back to top ↑</a>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
