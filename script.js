@@ -58,6 +58,25 @@
     sectionMap.forEach(function (m) { spy.observe(m.section); });
   }
 
+  // Case study password gate
+  var lockForm = document.querySelector(".case-lock-card");
+  if (lockForm) {
+    var CASE_STUDY_PASSWORD = "springhill43";
+    var lockInput = lockForm.querySelector(".case-lock-input");
+    var lockError = lockForm.querySelector(".case-lock-error");
+    lockForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (lockInput.value === CASE_STUDY_PASSWORD) {
+        try { sessionStorage.setItem("cs_unlocked", "yes"); } catch (err) {}
+        document.documentElement.classList.remove("cs-locked");
+      } else {
+        lockError.hidden = false;
+        lockInput.value = "";
+        lockInput.focus();
+      }
+    });
+  }
+
   // Footer year
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
