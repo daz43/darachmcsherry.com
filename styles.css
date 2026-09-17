@@ -552,6 +552,9 @@ section { padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 64px); scroll-margi
   max-width: 60ch;
   margin: 0;
 }
+.case-tagline + .case-tagline {
+  margin-top: 12px;
+}
 
 .case-body {
   padding: 0 clamp(20px, 5vw, 64px) clamp(64px, 10vw, 120px);
@@ -813,6 +816,13 @@ section { padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 64px); scroll-margi
   font-weight: 600;
   font-size: 0.98rem;
   color: var(--ink);
+}
+.persona-card p + p {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
 }
 
 .story-grid {

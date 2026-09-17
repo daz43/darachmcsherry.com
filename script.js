@@ -9,9 +9,14 @@
     navToggle.setAttribute("aria-expanded", open ? "true" : "false");
   });
   nav.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", function () {
+    link.addEventListener("click", function (e) {
       nav.classList.remove("is-open");
       navToggle.setAttribute("aria-expanded", "false");
+      var target = document.getElementById(link.hash.slice(1));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+      }
     });
   });
 
